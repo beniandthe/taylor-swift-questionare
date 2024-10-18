@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start</title>
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    
+    <form method="POST" action="{% url 'questionare:next_question' question.id %}">
+        {% csrf_token %}
+        <ul>
+            {% for choice in question.choice_set.all %}
+                <li>
+                    <input type="radio" name="choice" value="{{ choice.id }}" id="choice{{ choice.id }}">
+                    <label for="choice{{ choice.id }}">{{ choice.choice_text }}</label>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html>

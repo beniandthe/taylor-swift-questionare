@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Taylor Swift Song Recommendations</title>
+</head>
+<body>
+    <h1>Your Taylor Swift Song Recommendations</h1>
+
+    {% if recommended_songs %}
+        <ul>
+            {% for song in recommended_songs %}
+                <li>{{ song }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recommendations available. Please answer the questions to get your results!</p>
+    {% endif %}
+
+    <a href="{% url 'questionare:start' %}">Take the questionnaire again</a>
+</body>
+</html>
